@@ -25,9 +25,9 @@
 
       <dt>Vost</dt>
       <dd>
-        <% if @why.answer.present? %>
+        <% if @why.vost.present? %>
           <a href="/vosts/<%= @why.vost_id %>">
-            <%= @why.answer.response %>
+            <%= @why.vost.response %>
           </a>
         <% end %>
       </dd>

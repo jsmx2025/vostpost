@@ -69,8 +69,8 @@
     </div>
 
 <div class="form-group">
-      <%= f.label :answer_response_cont, "Vost response contains" %>
-      <%= f.text_field :answer_response_cont, :class => "form-control", :placeholder => "Vost response contains" %>
+      <%= f.label :vost_response_cont, "Vost response contains" %>
+      <%= f.text_field :vost_response_cont, :class => "form-control", :placeholder => "Vost response contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
@@ -111,9 +111,9 @@
           <% end %>
         </td>
         <td>
-          <% if why.answer.present? %>
-            <a href="/vosts/<%= why.answer.id %>">
-              <%= why.answer.response %>
+          <% if why.vost.present? %>
+            <a href="/vosts/<%= why.vost.id %>">
+              <%= why.vost.response %>
             </a>
           <% end %>
         </td>

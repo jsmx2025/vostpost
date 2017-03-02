@@ -1,9 +1,7 @@
 class Why < ApplicationRecord
   # Direct associations
 
-  belongs_to :answer,
-             :class_name => "Vost",
-             :foreign_key => "vost_id"
+  belongs_to :vost
 
   has_many   :whyvosts,
              :dependent => :nullify
