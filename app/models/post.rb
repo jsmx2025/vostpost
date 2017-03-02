@@ -4,7 +4,8 @@ class Post < ApplicationRecord
   has_many   :whyvosts,
              :dependent => :destroy
 
-  has_many   :whies
+  has_many   :whies,
+             :dependent => :nullify
 
   has_many   :vosts,
              :dependent => :destroy
@@ -15,5 +16,7 @@ class Post < ApplicationRecord
   # Indirect associations
 
   # Validations
+
+  validates :body, :presence => true
 
 end

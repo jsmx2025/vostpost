@@ -16,4 +16,10 @@ class Whyvost < ApplicationRecord
 
   # Validations
 
+  validates :post_id, :presence => true
+
+  validates :vost_id, :presence => true
+
+  validates :why_id, :presence => true
+
 end
