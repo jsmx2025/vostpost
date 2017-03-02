@@ -47,6 +47,60 @@
   </div>
 </div>
 
+<!-- A Why has many whyvosts -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Whyvosts
+      </li>
+
+      <% @why.whyvosts.each do |whyvost| %>
+        <li class="list-group-item">
+          <a href="/whyvosts/<%= whyvost.id %>">
+            <%= whyvost.response %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/whyvosts/<%= whyvost.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/whyvosts/<%= whyvost.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_whyvost/<%= whyvost.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_whyvost" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for response -->
+      <div class="form-group">
+        <label for="response" class="control-label">
+          Response
+        </label>
+
+        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for why_id -->
+      <input type="hidden" name="why_id" value="<%= @why.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Whyvost
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <!-- A Why has many post -->
 
 <div class="row">

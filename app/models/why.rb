@@ -4,6 +4,9 @@ class Why < ApplicationRecord
   belongs_to :answer,
              :class_name => "Vost"
 
+  has_many   :whyvosts,
+             :dependent => :nullify
+
   belongs_to :user
 
   # Indirect associations
