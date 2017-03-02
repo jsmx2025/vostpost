@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "posts#index"
   # Routes for the Inquiry resource:
   # CREATE
   get "/inquiries/new", :controller => "inquiries", :action => "new"
