@@ -24,7 +24,7 @@
           Answer
         </label>
 
-        <input type="text" id="answer_id" name="answer_id" placeholder="Answer" class="form-control" value="<%= @why.answer_id %>">
+        <%= select_tag(:answer_id, options_from_collection_for_select(Vost.all, :id, :yes_no, @why.answer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for body -->
