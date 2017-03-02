@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :inquiries,
+             :dependent => :destroy
+
   has_many   :whies,
              :dependent => :nullify
 
