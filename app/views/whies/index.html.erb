@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Whies
+    <a href="/whies/new" class="btn btn-lg btn-success">New Why</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Answer</th>
+        <th>Body</th>
+        <th>Question</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @whies.each do |why| %>
+      <tr>
+        <td><%= why.answer_id %></td>
+        <td><%= why.body %></td>
+        <td><%= why.question_id %></td>
+        <td><%= why.user_id %></td>
+        <td>
+          <a href="/whies/<%= why.id %>" class="btn btn-primary">Show</a>
+          <a href="/whies/<%= why.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

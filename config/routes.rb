@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Why resource:
+  # CREATE
+  get "/whies/new", :controller => "whies", :action => "new"
+  post "/create_why", :controller => "whies", :action => "create"
+
+  # READ
+  get "/whies", :controller => "whies", :action => "index"
+  get "/whies/:id", :controller => "whies", :action => "show"
+
+  # UPDATE
+  get "/whies/:id/edit", :controller => "whies", :action => "edit"
+  post "/update_why/:id", :controller => "whies", :action => "update"
+
+  # DELETE
+  get "/delete_why/:id", :controller => "whies", :action => "destroy"
+  #------------------------------
+
   # Routes for the Post resource:
   # CREATE
   get "/posts/new", :controller => "posts", :action => "new"
