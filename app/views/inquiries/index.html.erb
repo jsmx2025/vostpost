@@ -15,7 +15,7 @@
 
       <% @inquiries.each do |inquiry| %>
       <tr>
-        <td><%= inquiry.user_id %></td>
+        <td><%= inquiry.user.email %></td>
         <td>
           <a href="/inquiries/<%= inquiry.id %>" class="btn btn-primary">Show</a>
           <a href="/inquiries/<%= inquiry.id %>/edit" class="btn btn-warning">Edit</a>
