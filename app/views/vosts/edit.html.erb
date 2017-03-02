@@ -35,14 +35,8 @@
         <%= select_tag(:question_id, options_from_collection_for_select(Post.all, :id, :body, @vost.question_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email, @vost.user_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <button class="btn btn-warning">
         Update Vost
