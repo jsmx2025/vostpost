@@ -16,6 +16,7 @@ class VostsController < ApplicationController
   end
 
   def show
+    @why = Why.new
     @vost = Vost.find(params[:id])
 
     render("vosts/show.html.erb")

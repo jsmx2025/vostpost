@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @vost = Vost.new
     @post = Post.find(params[:id])
 
     render("posts/show.html.erb")

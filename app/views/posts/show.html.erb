@@ -56,6 +56,37 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_vost" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for yes_no -->
+      <div class="checkbox">
+        <label for="yes_no">
+          <input type="checkbox" id="yes_no" name="yes_no" value="1" <%= "checked" if @vost.yes_no %>>
+          Yes no
+        </label>
+      </div>
+
+      <!-- Label and input for question_id -->
+      <div class="form-group">
+        <label for="question_id" class="control-label">
+          Question
+        </label>
+
+        <%= select_tag(:question_id, options_from_collection_for_select(Post.all, :id, :body), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Vost
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
