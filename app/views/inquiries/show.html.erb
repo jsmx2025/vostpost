@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h3>Inquiry #<%= @inquiry.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>User</dt>
+      <dd><%= @inquiry.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/inquiries" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/inquiries/<%= @inquiry.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_inquiry/<%= @inquiry.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
