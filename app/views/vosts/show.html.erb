@@ -20,12 +20,14 @@
       <a href="/vosts" class="btn btn-primary">
         Back
       </a>
-      <a href="/vosts/<%= @vost.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_vost/<%= @vost.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @vost.user %>
+        <a href="/vosts/<%= @vost.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_vost/<%= @vost.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>

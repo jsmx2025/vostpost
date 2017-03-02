@@ -1,4 +1,14 @@
 class VostsController < ApplicationController
+  before_action :current_user_must_be_vost_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_vost_user
+    vost = Vost.find(params[:id])
+
+    unless current_user == vost.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @vosts = Vost.all
 
