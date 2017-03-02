@@ -24,8 +24,11 @@
         <td><%= why.user.email %></td>
         <td>
           <a href="/whies/<%= why.id %>" class="btn btn-primary">Show</a>
-          <a href="/whies/<%= why.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == why.user %>
+            <a href="/whies/<%= why.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

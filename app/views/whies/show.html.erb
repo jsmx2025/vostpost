@@ -23,12 +23,14 @@
       <a href="/whies" class="btn btn-primary">
         Back
       </a>
-      <a href="/whies/<%= @why.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_why/<%= @why.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @why.user %>
+        <a href="/whies/<%= @why.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_why/<%= @why.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
