@@ -10,7 +10,8 @@ class WhiesController < ApplicationController
   end
 
   def index
-    @whies = Why.page(params[:page]).per(10)
+    @q = Why.ransack(params[:q])
+    @whies = @q.result(:distinct => true).includes(:user, :answer, :post).page(params[:page]).per(10)
 
     render("whies/index.html.erb")
   end

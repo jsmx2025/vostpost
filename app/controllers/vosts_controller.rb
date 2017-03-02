@@ -10,7 +10,8 @@ class VostsController < ApplicationController
   end
 
   def index
-    @vosts = Vost.page(params[:page]).per(10)
+    @q = Vost.ransack(params[:q])
+    @vosts = @q.result(:distinct => true).includes(:user, :post, :whies).page(params[:page]).per(10)
 
     render("vosts/index.html.erb")
   end

@@ -1,6 +1,7 @@
 class InquiriesController < ApplicationController
   def index
-    @inquiries = Inquiry.page(params[:page]).per(10)
+    @q = Inquiry.ransack(params[:q])
+    @inquiries = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
 
     render("inquiries/index.html.erb")
   end
