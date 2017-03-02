@@ -1,6 +1,9 @@
 class Vost < ApplicationRecord
   # Direct associations
 
+  belongs_to :post,
+             :foreign_key => "question_id"
+
   belongs_to :user
 
   # Indirect associations
