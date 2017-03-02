@@ -18,6 +18,18 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for post_id -->
+      <div class="form-group">
+        <label for="post_id" class="control-label">
+          Post
+        </label>
+
+        <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body, @vost.post_id), :class => "form-control") %>
+      </div>
+
       <!-- Label and input for response -->
       <div class="form-group">
         <label for="response" class="control-label">
@@ -26,18 +38,6 @@
 
         <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="<%= @vost.response %>">
       </div>
-
-      <!-- Label and input for question_id -->
-      <div class="form-group">
-        <label for="question_id" class="control-label">
-          Question
-        </label>
-
-        <%= select_tag(:question_id, options_from_collection_for_select(Post.all, :id, :body, @vost.question_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Vost

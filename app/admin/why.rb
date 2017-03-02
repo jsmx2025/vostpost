@@ -1,6 +1,6 @@
 ActiveAdmin.register Why do
 
- permit_params :answer_id, :body, :post_id, :user_id
+ permit_params :user_id, :post_id, :vost_id, :body
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

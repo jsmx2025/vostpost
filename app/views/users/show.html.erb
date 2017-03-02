@@ -102,7 +102,7 @@
       <% @user.whies.each do |why| %>
         <li class="list-group-item">
           <a href="/whies/<%= why.id %>">
-            <%= why.body %>
+            <%= why.created_at %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/whies/<%= why.id %>" class="btn btn-primary">
@@ -113,39 +113,6 @@
                 <i class="fa fa-edit"></i>
               </a>
               <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many inquiries -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Inquiries
-      </li>
-
-      <% @user.inquiries.each do |inquiry| %>
-        <li class="list-group-item">
-          <a href="/inquiries/<%= inquiry.id %>">
-            <%= inquiry.user_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/inquiries/<%= inquiry.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == inquiry.user %>
-              <a href="/inquiries/<%= inquiry.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_inquiry/<%= inquiry.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             <% end %>

@@ -18,24 +18,6 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for response -->
-      <div class="form-group">
-        <label for="response" class="control-label">
-          Response
-        </label>
-
-        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="<%= @whyvost.response %>">
-      </div>
-
-      <!-- Label and input for why_id -->
-      <div class="form-group">
-        <label for="why_id" class="control-label">
-          Why
-        </label>
-
-        <%= select_tag(:why_id, options_from_collection_for_select(Why.all, :id, :body, @whyvost.why_id), :class => "form-control") %>
-      </div>
-
       <!-- Label and input for vost_id -->
       <div class="form-group">
         <label for="vost_id" class="control-label">
@@ -52,6 +34,24 @@
         </label>
 
         <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body, @whyvost.post_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for why_id -->
+      <div class="form-group">
+        <label for="why_id" class="control-label">
+          Why
+        </label>
+
+        <%= select_tag(:why_id, options_from_collection_for_select(Why.all, :id, :created_at, @whyvost.why_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for response -->
+      <div class="form-group">
+        <label for="response" class="control-label">
+          Response
+        </label>
+
+        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="<%= @whyvost.response %>">
       </div>
 
       <button class="btn btn-warning">

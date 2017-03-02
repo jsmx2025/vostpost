@@ -87,23 +87,22 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Answer</th>
-        <th>Body</th>
-        <th>Post</th>
         <th>User</th>
+        <th>Post</th>
+        <th>Vost</th>
+        <th>Body</th>
         <th>Actions</th>
       </tr>
 
       <% @whies.each do |why| %>
       <tr>
         <td>
-          <% if why.answer.present? %>
-            <a href="/vosts/<%= why.answer.id %>">
-              <%= why.answer.response %>
+          <% if why.user.present? %>
+            <a href="/users/<%= why.user.id %>">
+              <%= why.user.email %>
             </a>
           <% end %>
         </td>
-        <td><%= why.body %></td>
         <td>
           <% if why.post.present? %>
             <a href="/posts/<%= why.post.id %>">
@@ -112,12 +111,13 @@
           <% end %>
         </td>
         <td>
-          <% if why.user.present? %>
-            <a href="/users/<%= why.user.id %>">
-              <%= why.user.email %>
+          <% if why.answer.present? %>
+            <a href="/vosts/<%= why.answer.id %>">
+              <%= why.answer.response %>
             </a>
           <% end %>
         </td>
+        <td><%= why.body %></td>
         <td>
           <a href="/whies/<%= why.id %>" class="btn btn-primary">Show</a>
           

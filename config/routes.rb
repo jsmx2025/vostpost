@@ -19,23 +19,6 @@ Rails.application.routes.draw do
   get "/delete_whyvost/:id", :controller => "whyvosts", :action => "destroy"
   #------------------------------
 
-  # Routes for the Inquiry resource:
-  # CREATE
-  get "/inquiries/new", :controller => "inquiries", :action => "new"
-  post "/create_inquiry", :controller => "inquiries", :action => "create"
-
-  # READ
-  get "/inquiries", :controller => "inquiries", :action => "index"
-  get "/inquiries/:id", :controller => "inquiries", :action => "show"
-
-  # UPDATE
-  get "/inquiries/:id/edit", :controller => "inquiries", :action => "edit"
-  post "/update_inquiry/:id", :controller => "inquiries", :action => "update"
-
-  # DELETE
-  get "/delete_inquiry/:id", :controller => "inquiries", :action => "destroy"
-  #------------------------------
-
   # Routes for the Vost resource:
   # CREATE
   get "/vosts/new", :controller => "vosts", :action => "new"

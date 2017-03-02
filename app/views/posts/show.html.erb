@@ -68,6 +68,12 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for post_id -->
+      <input type="hidden" name="post_id" value="<%= @post.id %>">
+
       <!-- Label and input for response -->
       <div class="form-group">
         <label for="response" class="control-label">
@@ -76,18 +82,6 @@
 
         <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
       </div>
-
-      <!-- Label and input for question_id -->
-      <div class="form-group">
-        <label for="question_id" class="control-label">
-          Question
-        </label>
-
-        <%= select_tag(:question_id, options_from_collection_for_select(Post.all, :id, :body), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <button class="btn btn-block btn-success">
         Create Vost
@@ -110,7 +104,7 @@
       <% @post.whies.each do |why| %>
         <li class="list-group-item">
           <a href="/whies/<%= why.id %>">
-            <%= why.body %>
+            <%= why.created_at %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/whies/<%= why.id %>" class="btn btn-primary">
@@ -131,13 +125,19 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for answer_id -->
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for post_id -->
+      <input type="hidden" name="post_id" value="<%= @post.id %>">
+
+      <!-- Label and input for vost_id -->
       <div class="form-group">
-        <label for="answer_id" class="control-label">
-          Answer
+        <label for="vost_id" class="control-label">
+          Vost
         </label>
 
-        <%= select_tag(:answer_id, options_from_collection_for_select(Vost.all, :id, :response), :class => "form-control") %>
+        <%= select_tag(:vost_id, options_from_collection_for_select(Vost.all, :id, :response), :class => "form-control") %>
       </div>
 
       <!-- Label and input for body -->
@@ -146,14 +146,8 @@
           Body
         </label>
 
-        <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"></textarea>
+        <input type="text" id="body" name="body" placeholder="Body" class="form-control" value="">
       </div>
-
-      <!-- Label and input for post_id -->
-      <input type="hidden" name="post_id" value="<%= @post.id %>">
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <button class="btn btn-block btn-success">
         Create Why
@@ -197,24 +191,6 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for response -->
-      <div class="form-group">
-        <label for="response" class="control-label">
-          Response
-        </label>
-
-        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
-      </div>
-
-      <!-- Label and input for why_id -->
-      <div class="form-group">
-        <label for="why_id" class="control-label">
-          Why
-        </label>
-
-        <%= select_tag(:why_id, options_from_collection_for_select(Why.all, :id, :body), :class => "form-control") %>
-      </div>
-
       <!-- Label and input for vost_id -->
       <div class="form-group">
         <label for="vost_id" class="control-label">
@@ -226,6 +202,24 @@
 
       <!-- Label and input for post_id -->
       <input type="hidden" name="post_id" value="<%= @post.id %>">
+
+      <!-- Label and input for why_id -->
+      <div class="form-group">
+        <label for="why_id" class="control-label">
+          Why
+        </label>
+
+        <%= select_tag(:why_id, options_from_collection_for_select(Why.all, :id, :created_at), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for response -->
+      <div class="form-group">
+        <label for="response" class="control-label">
+          Response
+        </label>
+
+        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
+      </div>
 
       <button class="btn btn-block btn-success">
         Create Whyvost

@@ -32,10 +32,10 @@ class WhiesController < ApplicationController
   def create
     @why = Why.new
 
-    @why.answer_id = params[:answer_id]
-    @why.body = params[:body]
-    @why.post_id = params[:post_id]
     @why.user_id = params[:user_id]
+    @why.post_id = params[:post_id]
+    @why.vost_id = params[:vost_id]
+    @why.body = params[:body]
 
     save_status = @why.save
 
@@ -61,11 +61,9 @@ class WhiesController < ApplicationController
 
   def update
     @why = Why.find(params[:id])
-
-    @why.answer_id = params[:answer_id]
-    @why.body = params[:body]
     @why.post_id = params[:post_id]
-    @why.user_id = params[:user_id]
+    @why.vost_id = params[:vost_id]
+    @why.body = params[:body]
 
     save_status = @why.save
 

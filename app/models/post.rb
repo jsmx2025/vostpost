@@ -7,7 +7,6 @@ class Post < ApplicationRecord
   has_many   :whies
 
   has_many   :vosts,
-             :foreign_key => "question_id",
              :dependent => :destroy
 
   belongs_to :user,

@@ -21,10 +21,10 @@ class WhyvostsController < ApplicationController
   def create
     @whyvost = Whyvost.new
 
-    @whyvost.response = params[:response]
-    @whyvost.why_id = params[:why_id]
     @whyvost.vost_id = params[:vost_id]
     @whyvost.post_id = params[:post_id]
+    @whyvost.why_id = params[:why_id]
+    @whyvost.response = params[:response]
 
     save_status = @whyvost.save
 
@@ -51,10 +51,10 @@ class WhyvostsController < ApplicationController
   def update
     @whyvost = Whyvost.find(params[:id])
 
-    @whyvost.response = params[:response]
-    @whyvost.why_id = params[:why_id]
     @whyvost.vost_id = params[:vost_id]
     @whyvost.post_id = params[:post_id]
+    @whyvost.why_id = params[:why_id]
+    @whyvost.response = params[:response]
 
     save_status = @whyvost.save
 
