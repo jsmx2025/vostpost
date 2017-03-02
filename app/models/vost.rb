@@ -1,6 +1,10 @@
 class Vost < ApplicationRecord
   # Direct associations
 
+  has_many   :whies,
+             :foreign_key => "answer_id",
+             :dependent => :nullify
+
   belongs_to :post,
              :foreign_key => "question_id"
 
