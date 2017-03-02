@@ -23,3 +23,127 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many questions -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Questions
+      </li>
+
+      <% @user.questions.each do |post| %>
+        <li class="list-group-item">
+          <a href="/posts/<%= post.id %>">
+            <%= post.body %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/posts/<%= post.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/posts/<%= post.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_post/<%= post.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many vosts -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Vosts
+      </li>
+
+      <% @user.vosts.each do |vost| %>
+        <li class="list-group-item">
+          <a href="/vosts/<%= vost.id %>">
+            <%= vost.yes_no %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/vosts/<%= vost.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/vosts/<%= vost.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_vost/<%= vost.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many whies -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Whies
+      </li>
+
+      <% @user.whies.each do |why| %>
+        <li class="list-group-item">
+          <a href="/whies/<%= why.id %>">
+            <%= why.body %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/whies/<%= why.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/whies/<%= why.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many inquiries -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Inquiries
+      </li>
+
+      <% @user.inquiries.each do |inquiry| %>
+        <li class="list-group-item">
+          <a href="/inquiries/<%= inquiry.id %>">
+            <%= inquiry.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/inquiries/<%= inquiry.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/inquiries/<%= inquiry.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_inquiry/<%= inquiry.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

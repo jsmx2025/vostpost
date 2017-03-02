@@ -29,3 +29,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Vost has many whies -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Whies
+      </li>
+
+      <% @vost.whies.each do |why| %>
+        <li class="list-group-item">
+          <a href="/whies/<%= why.id %>">
+            <%= why.body %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/whies/<%= why.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/whies/<%= why.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
