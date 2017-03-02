@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :vosts,
+             :dependent => :nullify
+
   has_many   :questions,
              :class_name => "Post",
              :dependent => :nullify
