@@ -5,15 +5,18 @@ class Vost < ApplicationRecord
              :dependent => :destroy
 
   has_many   :whies,
-             :dependent => :nullify
+             :dependent => :destroy
 
-  belongs_to :post
+  belongs_to :post,
+             :counter_cache => true
 
   belongs_to :user
 
   # Indirect associations
 
   # Validations
+
+  validates :post_id, :presence => true
 
   validates :response, :presence => { :message => "You Gotta Choose!" }
 

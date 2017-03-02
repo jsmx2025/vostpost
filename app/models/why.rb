@@ -14,4 +14,6 @@ class Why < ApplicationRecord
 
   # Validations
 
+  validates :post_id, :presence => true
+
 end
