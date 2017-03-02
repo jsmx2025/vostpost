@@ -24,7 +24,7 @@
           Answer
         </label>
 
-        <%= select_tag(:answer_id, options_from_collection_for_select(Vost.all, :id, :yes_no, @why.answer_id), :class => "form-control") %>
+        <%= select_tag(:answer_id, options_from_collection_for_select(Vost.all, :id, :response, @why.answer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for body -->
@@ -36,13 +36,13 @@
         <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @why.body %></textarea>
       </div>
 
-      <!-- Label and input for question_id -->
+      <!-- Label and input for post_id -->
       <div class="form-group">
-        <label for="question_id" class="control-label">
-          Question
+        <label for="post_id" class="control-label">
+          Post
         </label>
 
-        <input type="text" id="question_id" name="question_id" placeholder="Question" class="form-control" value="<%= @why.question_id %>">
+        <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body, @why.post_id), :class => "form-control") %>
       </div>
 
       

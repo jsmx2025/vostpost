@@ -1,6 +1,9 @@
 class Vost < ApplicationRecord
   # Direct associations
 
+  has_many   :whyvosts,
+             :dependent => :destroy
+
   has_many   :whies,
              :foreign_key => "answer_id",
              :dependent => :nullify
@@ -14,6 +17,6 @@ class Vost < ApplicationRecord
 
   # Validations
 
-  validates :yes_no, :presence => { :message => "You Gotta Choose!" }
+  validates :response, :presence => { :message => "You Gotta Choose!" }
 
 end

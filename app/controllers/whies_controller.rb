@@ -11,7 +11,7 @@ class WhiesController < ApplicationController
 
   def index
     @q = Why.ransack(params[:q])
-    @whies = @q.result(:distinct => true).includes(:user, :whyvosts, :answer, :post).page(params[:page]).per(10)
+    @whies = @q.result(:distinct => true).includes(:user, :post, :whyvosts, :answer).page(params[:page]).per(10)
 
     render("whies/index.html.erb")
   end
@@ -34,7 +34,7 @@ class WhiesController < ApplicationController
 
     @why.answer_id = params[:answer_id]
     @why.body = params[:body]
-    @why.question_id = params[:question_id]
+    @why.post_id = params[:post_id]
     @why.user_id = params[:user_id]
 
     save_status = @why.save
@@ -64,7 +64,7 @@ class WhiesController < ApplicationController
 
     @why.answer_id = params[:answer_id]
     @why.body = params[:body]
-    @why.question_id = params[:question_id]
+    @why.post_id = params[:post_id]
     @why.user_id = params[:user_id]
 
     save_status = @why.save

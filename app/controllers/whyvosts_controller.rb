@@ -1,7 +1,7 @@
 class WhyvostsController < ApplicationController
   def index
     @q = Whyvost.ransack(params[:q])
-    @whyvosts = @q.result(:distinct => true).includes(:why, :user).page(params[:page]).per(10)
+    @whyvosts = @q.result(:distinct => true).includes(:post, :why, :vost, :user).page(params[:page]).per(10)
 
     render("whyvosts/index.html.erb")
   end
@@ -23,6 +23,8 @@ class WhyvostsController < ApplicationController
 
     @whyvost.response = params[:response]
     @whyvost.why_id = params[:why_id]
+    @whyvost.vost_id = params[:vost_id]
+    @whyvost.post_id = params[:post_id]
 
     save_status = @whyvost.save
 
@@ -51,6 +53,8 @@ class WhyvostsController < ApplicationController
 
     @whyvost.response = params[:response]
     @whyvost.why_id = params[:why_id]
+    @whyvost.vost_id = params[:vost_id]
+    @whyvost.post_id = params[:post_id]
 
     save_status = @whyvost.save
 

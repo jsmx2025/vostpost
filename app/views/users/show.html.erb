@@ -69,7 +69,7 @@
       <% @user.vosts.each do |vost| %>
         <li class="list-group-item">
           <a href="/vosts/<%= vost.id %>">
-            <%= vost.yes_no %>
+            <%= vost.response %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/vosts/<%= vost.id %>" class="btn btn-primary">

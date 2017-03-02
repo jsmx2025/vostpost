@@ -59,21 +59,18 @@
     </div>
 
 <div class="form-group">
-      <%= f.label :vosts_yes_no_eq, "Vost yes_no " %>
-      <label class="radio-inline">
-        <%= f.radio_button :vosts_yes_no_eq, "1", checked: ((params[:q] && params[:q][:vosts_yes_no_eq]) == "1" ? "checked" : "") %> Yes
-      </label>
-      <label class="radio-inline">
-        <%= f.radio_button :vosts_yes_no_eq, "0", checked: ((params[:q] && params[:q][:vosts_yes_no_eq]) == "0" ? "checked" : "")%> No
-      </label>
-      <label class="radio-inline">
-        <%= f.radio_button :vosts_yes_no_eq, ""%> Either
-      </label>
+      <%= f.label :vosts_response_cont, "Vost response contains" %>
+      <%= f.text_field :vosts_response_cont, :class => "form-control", :placeholder => "Vost response contains" %>
     </div>
 
 <div class="form-group">
       <%= f.label :whies_body_cont, "Why body contains" %>
       <%= f.text_field :whies_body_cont, :class => "form-control", :placeholder => "Why body contains" %>
+    </div>
+
+<div class="form-group">
+      <%= f.label :whyvosts_response_cont, "Whyvost response contains" %>
+      <%= f.text_field :whyvosts_response_cont, :class => "form-control", :placeholder => "Whyvost response contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>

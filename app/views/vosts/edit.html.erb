@@ -18,12 +18,13 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for yes_no -->
-      <div class="checkbox">
-        <label for="yes_no">
-          <input type="checkbox" id="yes_no" name="yes_no" value="1" <%= "checked" if @vost.yes_no %>>
-          Yes no
+      <!-- Label and input for response -->
+      <div class="form-group">
+        <label for="response" class="control-label">
+          Response
         </label>
+
+        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="<%= @vost.response %>">
       </div>
 
       <!-- Label and input for question_id -->

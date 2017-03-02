@@ -54,8 +54,18 @@
       </script>
 
         <div class="form-group">
+      <%= f.label :post_body_cont, "Post body contains" %>
+      <%= f.text_field :post_body_cont, :class => "form-control", :placeholder => "Post body contains" %>
+    </div>
+
+<div class="form-group">
       <%= f.label :why_body_cont, "Why body contains" %>
       <%= f.text_field :why_body_cont, :class => "form-control", :placeholder => "Why body contains" %>
+    </div>
+
+<div class="form-group">
+      <%= f.label :vost_response_cont, "Vost response contains" %>
+      <%= f.text_field :vost_response_cont, :class => "form-control", :placeholder => "Vost response contains" %>
     </div>
 
 <div class="form-group">
@@ -79,6 +89,8 @@
       <tr>
         <th>Response</th>
         <th>Why</th>
+        <th>Vost</th>
+        <th>Post</th>
         <th>Actions</th>
       </tr>
 
@@ -89,6 +101,20 @@
           <% if whyvost.why.present? %>
             <a href="/whies/<%= whyvost.why.id %>">
               <%= whyvost.why.body %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if whyvost.vost.present? %>
+            <a href="/vosts/<%= whyvost.vost.id %>">
+              <%= whyvost.vost.response %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if whyvost.post.present? %>
+            <a href="/posts/<%= whyvost.post.id %>">
+              <%= whyvost.post.body %>
             </a>
           <% end %>
         </td>
