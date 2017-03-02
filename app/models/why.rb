@@ -8,6 +8,10 @@ class Why < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :post,
+             :through => :answer,
+             :source => :post
+
   # Validations
 
 end

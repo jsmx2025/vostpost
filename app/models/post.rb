@@ -10,6 +10,10 @@ class Post < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :whies,
+             :through => :vosts,
+             :source => :whies
+
   # Validations
 
 end
