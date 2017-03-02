@@ -9,10 +9,22 @@
       <dd><%= @vost.yes_no %></dd>
 
       <dt>Question</dt>
-      <dd><%= @vost.question_id %></dd>
+      <dd>
+        <% if @vost.post.present? %>
+          <a href="/posts/<%= @vost.question_id %>">
+            <%= @vost.post.body %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>User</dt>
-      <dd><%= @vost.user_id %></dd>
+      <dd>
+        <% if @vost.user.present? %>
+          <a href="/users/<%= @vost.user_id %>">
+            <%= @vost.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

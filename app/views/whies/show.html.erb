@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Answer</dt>
-      <dd><%= @why.answer_id %></dd>
+      <dd>
+        <% if @why.answer.present? %>
+          <a href="/vosts/<%= @why.answer_id %>">
+            <%= @why.answer.yes_no %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Body</dt>
       <dd><%= @why.body %></dd>
@@ -15,7 +21,13 @@
       <dd><%= @why.question_id %></dd>
 
       <dt>User</dt>
-      <dd><%= @why.user_id %></dd>
+      <dd>
+        <% if @why.user.present? %>
+          <a href="/users/<%= @why.user_id %>">
+            <%= @why.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

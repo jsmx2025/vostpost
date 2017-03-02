@@ -15,7 +15,13 @@
 
       <% @inquiries.each do |inquiry| %>
       <tr>
-        <td><%= inquiry.user.email %></td>
+        <td>
+          <% if inquiry.user.present? %>
+            <a href="/users/<%= inquiry.user.id %>">
+              <%= inquiry.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/inquiries/<%= inquiry.id %>" class="btn btn-primary">Show</a>
           <a href="/inquiries/<%= inquiry.id %>/edit" class="btn btn-warning">Edit</a>

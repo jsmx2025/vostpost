@@ -18,10 +18,22 @@
 
       <% @whies.each do |why| %>
       <tr>
-        <td><%= why.answer.yes_no %></td>
+        <td>
+          <% if why.answer.present? %>
+            <a href="/vosts/<%= why.answer.id %>">
+              <%= why.answer.yes_no %>
+            </a>
+          <% end %>
+        </td>
         <td><%= why.body %></td>
         <td><%= why.question_id %></td>
-        <td><%= why.user.email %></td>
+        <td>
+          <% if why.user.present? %>
+            <a href="/users/<%= why.user.id %>">
+              <%= why.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/whies/<%= why.id %>" class="btn btn-primary">Show</a>
           
