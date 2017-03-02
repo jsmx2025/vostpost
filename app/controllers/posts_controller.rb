@@ -47,8 +47,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
-    @post.user_id = params[:user_id]
     @post.body = params[:body]
 
     save_status = @post.save
