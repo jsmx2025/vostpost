@@ -11,12 +11,13 @@ class VostsController < ApplicationController
 
   def index
     @q = Vost.ransack(params[:q])
-    @vosts = @q.result(:distinct => true).includes(:user, :post, :whies).page(params[:page]).per(10)
+    @vosts = @q.result(:distinct => true).includes(:user, :post, :whies, :whyvosts).page(params[:page]).per(10)
 
     render("vosts/index.html.erb")
   end
 
   def show
+    @whyvost = Whyvost.new
     @why = Why.new
     @vost = Vost.find(params[:id])
 
@@ -32,7 +33,7 @@ class VostsController < ApplicationController
   def create
     @vost = Vost.new
 
-    @vost.yes_no = params[:yes_no]
+    @vost.response = params[:response]
     @vost.question_id = params[:question_id]
     @vost.user_id = params[:user_id]
 
@@ -61,7 +62,7 @@ class VostsController < ApplicationController
   def update
     @vost = Vost.find(params[:id])
 
-    @vost.yes_no = params[:yes_no]
+    @vost.response = params[:response]
     @vost.question_id = params[:question_id]
     @vost.user_id = params[:user_id]
 

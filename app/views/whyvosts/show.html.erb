@@ -17,6 +17,24 @@
         <% end %>
       </dd>
 
+      <dt>Vost</dt>
+      <dd>
+        <% if @whyvost.vost.present? %>
+          <a href="/vosts/<%= @whyvost.vost_id %>">
+            <%= @whyvost.vost.response %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Post</dt>
+      <dd>
+        <% if @whyvost.post.present? %>
+          <a href="/posts/<%= @whyvost.post_id %>">
+            <%= @whyvost.post.body %>
+          </a>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">

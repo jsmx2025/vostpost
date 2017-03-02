@@ -1,6 +1,6 @@
 ActiveAdmin.register Whyvost do
 
- permit_params :response, :why_id
+ permit_params :response, :why_id, :vost_id, :post_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

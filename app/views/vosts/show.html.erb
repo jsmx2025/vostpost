@@ -5,8 +5,8 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Yes no</dt>
-      <dd><%= @vost.yes_no %></dd>
+      <dt>Response</dt>
+      <dd><%= @vost.response %></dd>
 
       <dt>Question</dt>
       <dd>
@@ -83,7 +83,7 @@
           Answer
         </label>
 
-        <%= select_tag(:answer_id, options_from_collection_for_select(Vost.all, :id, :yes_no), :class => "form-control") %>
+        <%= select_tag(:answer_id, options_from_collection_for_select(Vost.all, :id, :response), :class => "form-control") %>
       </div>
 
       <!-- Label and input for body -->
@@ -95,13 +95,13 @@
         <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"></textarea>
       </div>
 
-      <!-- Label and input for question_id -->
+      <!-- Label and input for post_id -->
       <div class="form-group">
-        <label for="question_id" class="control-label">
-          Question
+        <label for="post_id" class="control-label">
+          Post
         </label>
 
-        <input type="text" id="question_id" name="question_id" placeholder="Question" class="form-control" value="">
+        <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
@@ -109,6 +109,78 @@
 
       <button class="btn btn-block btn-success">
         Create Why
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Vost has many whyvosts -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Whyvosts
+      </li>
+
+      <% @vost.whyvosts.each do |whyvost| %>
+        <li class="list-group-item">
+          <a href="/whyvosts/<%= whyvost.id %>">
+            <%= whyvost.response %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/whyvosts/<%= whyvost.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/whyvosts/<%= whyvost.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_whyvost/<%= whyvost.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_whyvost" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for response -->
+      <div class="form-group">
+        <label for="response" class="control-label">
+          Response
+        </label>
+
+        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for why_id -->
+      <div class="form-group">
+        <label for="why_id" class="control-label">
+          Why
+        </label>
+
+        <%= select_tag(:why_id, options_from_collection_for_select(Why.all, :id, :body), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for vost_id -->
+      <input type="hidden" name="vost_id" value="<%= @vost.id %>">
+
+      <!-- Label and input for post_id -->
+      <div class="form-group">
+        <label for="post_id" class="control-label">
+          Post
+        </label>
+
+        <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Whyvost
       </button>
     </form>
       </li>

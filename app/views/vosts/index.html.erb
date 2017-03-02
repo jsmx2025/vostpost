@@ -9,18 +9,8 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
-    <%= f.label :yes_no_eq, "Yes no" %>
-    <div>
-      <label class="radio-inline">
-        <%= f.radio_button :yes_no_eq, "1", checked: ((params[:q] && params[:q][:yes_no_eq]) == "1" ? "checked" : "") %> Yes
-      </label>
-      <label class="radio-inline">
-        <%= f.radio_button :yes_no_eq, "0", checked: ((params[:q] && params[:q][:yes_no_eq]) == "0" ? "checked" : "")%> No
-      </label>
-      <label class="radio-inline">
-        <%= f.radio_button :yes_no_eq, ""%> Either
-      </label>
-    </div>
+    <%= f.label :response_cont, "Response contains" %>
+    <%= f.text_field :response_cont, :class => "form-control", :placeholder => "Response contains" %>
   </div>
 
 <div class="form-group">
@@ -78,6 +68,11 @@
       <%= f.text_field :whies_body_cont, :class => "form-control", :placeholder => "Why body contains" %>
     </div>
 
+<div class="form-group">
+      <%= f.label :whyvosts_response_cont, "Whyvost response contains" %>
+      <%= f.text_field :whyvosts_response_cont, :class => "form-control", :placeholder => "Whyvost response contains" %>
+    </div>
+
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/vosts" class="btn btn-default btn-block mb-1">Clear filters</a>
@@ -92,7 +87,7 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Yes no</th>
+        <th>Response</th>
         <th>Question</th>
         <th>User</th>
         <th>Actions</th>
@@ -100,7 +95,7 @@
 
       <% @vosts.each do |vost| %>
       <tr>
-        <td><%= vost.yes_no %></td>
+        <td><%= vost.response %></td>
         <td>
           <% if vost.post.present? %>
             <a href="/posts/<%= vost.post.id %>">

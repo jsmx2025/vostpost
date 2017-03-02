@@ -1,6 +1,11 @@
 class Post < ApplicationRecord
   # Direct associations
 
+  has_many   :whyvosts,
+             :dependent => :destroy
+
+  has_many   :whies
+
   has_many   :vosts,
              :foreign_key => "question_id",
              :dependent => :destroy
@@ -9,10 +14,6 @@ class Post < ApplicationRecord
              :counter_cache => :questions_count
 
   # Indirect associations
-
-  has_many   :whies,
-             :through => :vosts,
-             :source => :whies
 
   # Validations
 

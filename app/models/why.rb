@@ -7,13 +7,11 @@ class Why < ApplicationRecord
   has_many   :whyvosts,
              :dependent => :nullify
 
+  belongs_to :post
+
   belongs_to :user
 
   # Indirect associations
-
-  has_one    :post,
-             :through => :answer,
-             :source => :post
 
   # Validations
 

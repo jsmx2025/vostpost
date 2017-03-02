@@ -14,18 +14,6 @@
   </div>
 
 <div class="form-group">
-  <%= f.label :question_id, "Question" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :question_id_gteq, :class => "form-control", :placeholder => "Question greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :question_id_lteq, :class => "form-control", :placeholder => "Question less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
           <%= f.label :created_at, "Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
@@ -71,26 +59,18 @@
     </div>
 
 <div class="form-group">
+      <%= f.label :post_body_cont, "Post body contains" %>
+      <%= f.text_field :post_body_cont, :class => "form-control", :placeholder => "Post body contains" %>
+    </div>
+
+<div class="form-group">
       <%= f.label :whyvosts_response_cont, "Whyvost response contains" %>
       <%= f.text_field :whyvosts_response_cont, :class => "form-control", :placeholder => "Whyvost response contains" %>
     </div>
 
 <div class="form-group">
-      <%= f.label :answer_yes_no_eq, "Vost yes_no " %>
-      <label class="radio-inline">
-        <%= f.radio_button :answer_yes_no_eq, "1", checked: ((params[:q] && params[:q][:answer_yes_no_eq]) == "1" ? "checked" : "") %> Yes
-      </label>
-      <label class="radio-inline">
-        <%= f.radio_button :answer_yes_no_eq, "0", checked: ((params[:q] && params[:q][:answer_yes_no_eq]) == "0" ? "checked" : "")%> No
-      </label>
-      <label class="radio-inline">
-        <%= f.radio_button :answer_yes_no_eq, ""%> Either
-      </label>
-    </div>
-
-<div class="form-group">
-      <%= f.label :post_body_cont, "Post body contains" %>
-      <%= f.text_field :post_body_cont, :class => "form-control", :placeholder => "Post body contains" %>
+      <%= f.label :answer_response_cont, "Vost response contains" %>
+      <%= f.text_field :answer_response_cont, :class => "form-control", :placeholder => "Vost response contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
@@ -109,7 +89,7 @@
       <tr>
         <th>Answer</th>
         <th>Body</th>
-        <th>Question</th>
+        <th>Post</th>
         <th>User</th>
         <th>Actions</th>
       </tr>
@@ -119,12 +99,18 @@
         <td>
           <% if why.answer.present? %>
             <a href="/vosts/<%= why.answer.id %>">
-              <%= why.answer.yes_no %>
+              <%= why.answer.response %>
             </a>
           <% end %>
         </td>
         <td><%= why.body %></td>
-        <td><%= why.question_id %></td>
+        <td>
+          <% if why.post.present? %>
+            <a href="/posts/<%= why.post.id %>">
+              <%= why.post.body %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <% if why.user.present? %>
             <a href="/users/<%= why.user.id %>">

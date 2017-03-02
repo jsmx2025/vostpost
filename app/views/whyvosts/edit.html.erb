@@ -36,6 +36,24 @@
         <%= select_tag(:why_id, options_from_collection_for_select(Why.all, :id, :body, @whyvost.why_id), :class => "form-control") %>
       </div>
 
+      <!-- Label and input for vost_id -->
+      <div class="form-group">
+        <label for="vost_id" class="control-label">
+          Vost
+        </label>
+
+        <%= select_tag(:vost_id, options_from_collection_for_select(Vost.all, :id, :response, @whyvost.vost_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for post_id -->
+      <div class="form-group">
+        <label for="post_id" class="control-label">
+          Post
+        </label>
+
+        <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body, @whyvost.post_id), :class => "form-control") %>
+      </div>
+
       <button class="btn btn-warning">
         Update Whyvost
       </button>

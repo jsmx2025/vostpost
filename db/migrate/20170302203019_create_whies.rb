@@ -3,7 +3,7 @@ class CreateWhies < ActiveRecord::Migration
     create_table :whies do |t|
       t.integer :answer_id
       t.text :body
-      t.integer :question_id
+      t.integer :post_id
       t.integer :user_id
 
       t.timestamps
