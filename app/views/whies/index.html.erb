@@ -71,6 +71,11 @@
     </div>
 
 <div class="form-group">
+      <%= f.label :whyvosts_response_cont, "Whyvost response contains" %>
+      <%= f.text_field :whyvosts_response_cont, :class => "form-control", :placeholder => "Whyvost response contains" %>
+    </div>
+
+<div class="form-group">
       <%= f.label :answer_yes_no_eq, "Vost yes_no " %>
       <label class="radio-inline">
         <%= f.radio_button :answer_yes_no_eq, "1", checked: ((params[:q] && params[:q][:answer_yes_no_eq]) == "1" ? "checked" : "") %> Yes

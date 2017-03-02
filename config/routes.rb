@@ -2,6 +2,23 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "posts#index"
+  # Routes for the Whyvost resource:
+  # CREATE
+  get "/whyvosts/new", :controller => "whyvosts", :action => "new"
+  post "/create_whyvost", :controller => "whyvosts", :action => "create"
+
+  # READ
+  get "/whyvosts", :controller => "whyvosts", :action => "index"
+  get "/whyvosts/:id", :controller => "whyvosts", :action => "show"
+
+  # UPDATE
+  get "/whyvosts/:id/edit", :controller => "whyvosts", :action => "edit"
+  post "/update_whyvost/:id", :controller => "whyvosts", :action => "update"
+
+  # DELETE
+  get "/delete_whyvost/:id", :controller => "whyvosts", :action => "destroy"
+  #------------------------------
+
   # Routes for the Inquiry resource:
   # CREATE
   get "/inquiries/new", :controller => "inquiries", :action => "new"

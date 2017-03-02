@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :whyvosts,
+             :through => :whies,
+             :source => :whyvosts
+
   # Validations
 
   # Include default devise modules. Others available are:
