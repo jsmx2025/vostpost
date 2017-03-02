@@ -18,23 +18,8 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for answer_id -->
-      <div class="form-group">
-        <label for="answer_id" class="control-label">
-          Answer
-        </label>
-
-        <%= select_tag(:answer_id, options_from_collection_for_select(Vost.all, :id, :response, @why.answer_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for body -->
-      <div class="form-group">
-        <label for="body" class="control-label">
-          Body
-        </label>
-
-        <textarea id="body" name="body" placeholder="Body" class="form-control" rows="3"><%= @why.body %></textarea>
-      </div>
+      
+      
 
       <!-- Label and input for post_id -->
       <div class="form-group">
@@ -45,8 +30,23 @@
         <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body, @why.post_id), :class => "form-control") %>
       </div>
 
-      
-      
+      <!-- Label and input for vost_id -->
+      <div class="form-group">
+        <label for="vost_id" class="control-label">
+          Vost
+        </label>
+
+        <%= select_tag(:vost_id, options_from_collection_for_select(Vost.all, :id, :response, @why.vost_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for body -->
+      <div class="form-group">
+        <label for="body" class="control-label">
+          Body
+        </label>
+
+        <input type="text" id="body" name="body" placeholder="Body" class="form-control" value="<%= @why.body %>">
+      </div>
 
       <button class="btn btn-warning">
         Update Why

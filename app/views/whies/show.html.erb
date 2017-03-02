@@ -5,17 +5,14 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Answer</dt>
+      <dt>User</dt>
       <dd>
-        <% if @why.answer.present? %>
-          <a href="/vosts/<%= @why.answer_id %>">
-            <%= @why.answer.response %>
+        <% if @why.user.present? %>
+          <a href="/users/<%= @why.user_id %>">
+            <%= @why.user.email %>
           </a>
         <% end %>
       </dd>
-
-      <dt>Body</dt>
-      <dd><%= @why.body %></dd>
 
       <dt>Post</dt>
       <dd>
@@ -26,14 +23,17 @@
         <% end %>
       </dd>
 
-      <dt>User</dt>
+      <dt>Vost</dt>
       <dd>
-        <% if @why.user.present? %>
-          <a href="/users/<%= @why.user_id %>">
-            <%= @why.user.email %>
+        <% if @why.answer.present? %>
+          <a href="/vosts/<%= @why.vost_id %>">
+            <%= @why.answer.response %>
           </a>
         <% end %>
       </dd>
+
+      <dt>Body</dt>
+      <dd><%= @why.body %></dd>
 
     </dl>
 
@@ -86,18 +86,6 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for response -->
-      <div class="form-group">
-        <label for="response" class="control-label">
-          Response
-        </label>
-
-        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
-      </div>
-
-      <!-- Label and input for why_id -->
-      <input type="hidden" name="why_id" value="<%= @why.id %>">
-
       <!-- Label and input for vost_id -->
       <div class="form-group">
         <label for="vost_id" class="control-label">
@@ -114,6 +102,18 @@
         </label>
 
         <%= select_tag(:post_id, options_from_collection_for_select(Post.all, :id, :body), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for why_id -->
+      <input type="hidden" name="why_id" value="<%= @why.id %>">
+
+      <!-- Label and input for response -->
+      <div class="form-group">
+        <label for="response" class="control-label">
+          Response
+        </label>
+
+        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
       </div>
 
       <button class="btn btn-block btn-success">

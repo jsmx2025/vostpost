@@ -33,9 +33,9 @@ class VostsController < ApplicationController
   def create
     @vost = Vost.new
 
-    @vost.response = params[:response]
-    @vost.question_id = params[:question_id]
     @vost.user_id = params[:user_id]
+    @vost.post_id = params[:post_id]
+    @vost.response = params[:response]
 
     save_status = @vost.save
 
@@ -61,10 +61,8 @@ class VostsController < ApplicationController
 
   def update
     @vost = Vost.find(params[:id])
-
+    @vost.post_id = params[:post_id]
     @vost.response = params[:response]
-    @vost.question_id = params[:question_id]
-    @vost.user_id = params[:user_id]
 
     save_status = @vost.save
 

@@ -5,11 +5,9 @@ class Vost < ApplicationRecord
              :dependent => :destroy
 
   has_many   :whies,
-             :foreign_key => "answer_id",
              :dependent => :nullify
 
-  belongs_to :post,
-             :foreign_key => "question_id"
+  belongs_to :post
 
   belongs_to :user
 

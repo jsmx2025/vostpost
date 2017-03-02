@@ -5,18 +5,6 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Response</dt>
-      <dd><%= @whyvost.response %></dd>
-
-      <dt>Why</dt>
-      <dd>
-        <% if @whyvost.why.present? %>
-          <a href="/whies/<%= @whyvost.why_id %>">
-            <%= @whyvost.why.body %>
-          </a>
-        <% end %>
-      </dd>
-
       <dt>Vost</dt>
       <dd>
         <% if @whyvost.vost.present? %>
@@ -34,6 +22,18 @@
           </a>
         <% end %>
       </dd>
+
+      <dt>Why</dt>
+      <dd>
+        <% if @whyvost.why.present? %>
+          <a href="/whies/<%= @whyvost.why_id %>">
+            <%= @whyvost.why.created_at %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Response</dt>
+      <dd><%= @whyvost.response %></dd>
 
     </dl>
 
