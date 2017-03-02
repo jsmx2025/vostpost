@@ -35,7 +35,7 @@ class WhiesController < ApplicationController
     @why.user_id = params[:user_id]
     @why.post_id = params[:post_id]
     @why.vost_id = params[:vost_id]
-    @why.body = params[:body]
+    @why.response = params[:response]
 
     save_status = @why.save
 
@@ -63,7 +63,7 @@ class WhiesController < ApplicationController
     @why = Why.find(params[:id])
     @why.post_id = params[:post_id]
     @why.vost_id = params[:vost_id]
-    @why.body = params[:body]
+    @why.response = params[:response]
 
     save_status = @why.save
 

@@ -9,8 +9,8 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
-    <%= f.label :body_cont, "Body contains" %>
-    <%= f.text_field :body_cont, :class => "form-control", :placeholder => "Body contains" %>
+    <%= f.label :response_cont, "Response contains" %>
+    <%= f.text_field :response_cont, :class => "form-control", :placeholder => "Response contains" %>
   </div>
 
 <div class="form-group">
@@ -90,7 +90,7 @@
         <th>User</th>
         <th>Post</th>
         <th>Vost</th>
-        <th>Body</th>
+        <th>Response</th>
         <th>Actions</th>
       </tr>
 
@@ -117,7 +117,7 @@
             </a>
           <% end %>
         </td>
-        <td><%= why.body %></td>
+        <td><%= why.response %></td>
         <td>
           <a href="/whies/<%= why.id %>" class="btn btn-primary">Show</a>
           
