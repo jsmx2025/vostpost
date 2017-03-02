@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :questions,
+             :class_name => "Post",
+             :dependent => :nullify
+
   # Indirect associations
 
   # Validations
