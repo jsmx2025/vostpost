@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Vost resource:
+  # CREATE
+  get "/vosts/new", :controller => "vosts", :action => "new"
+  post "/create_vost", :controller => "vosts", :action => "create"
+
+  # READ
+  get "/vosts", :controller => "vosts", :action => "index"
+  get "/vosts/:id", :controller => "vosts", :action => "show"
+
+  # UPDATE
+  get "/vosts/:id/edit", :controller => "vosts", :action => "edit"
+  post "/update_vost/:id", :controller => "vosts", :action => "update"
+
+  # DELETE
+  get "/delete_vost/:id", :controller => "vosts", :action => "destroy"
+  #------------------------------
+
   # Routes for the Why resource:
   # CREATE
   get "/whies/new", :controller => "whies", :action => "new"
