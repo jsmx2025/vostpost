@@ -5,4 +5,6 @@ class Vost < ApplicationRecord
 
   # Validations
 
+  validates :yes_no, :presence => { :message => "You Gotta Choose!" }
+
 end
