@@ -18,7 +18,7 @@
       <% @vosts.each do |vost| %>
       <tr>
         <td><%= vost.yes_no %></td>
-        <td><%= vost.question_id %></td>
+        <td><%= vost.post.body %></td>
         <td><%= vost.user_id %></td>
         <td>
           <a href="/vosts/<%= vost.id %>" class="btn btn-primary">Show</a>
