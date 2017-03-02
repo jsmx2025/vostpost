@@ -10,7 +10,7 @@ class WhiesController < ApplicationController
   end
 
   def index
-    @whies = Why.all
+    @whies = Why.page(params[:page]).per(10)
 
     render("whies/index.html.erb")
   end

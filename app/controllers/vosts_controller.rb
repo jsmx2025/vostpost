@@ -10,7 +10,7 @@ class VostsController < ApplicationController
   end
 
   def index
-    @vosts = Vost.all
+    @vosts = Vost.page(params[:page]).per(10)
 
     render("vosts/index.html.erb")
   end

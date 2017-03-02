@@ -1,6 +1,6 @@
 class InquiriesController < ApplicationController
   def index
-    @inquiries = Inquiry.all
+    @inquiries = Inquiry.page(params[:page]).per(10)
 
     render("inquiries/index.html.erb")
   end
