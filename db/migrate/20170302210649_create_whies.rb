@@ -4,7 +4,7 @@ class CreateWhies < ActiveRecord::Migration
       t.integer :user_id
       t.integer :post_id
       t.integer :vost_id
-      t.string :body
+      t.string :response
 
       t.timestamps
 
