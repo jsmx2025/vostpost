@@ -1,27 +1,5 @@
 <div class="page-header">
-  <h3>User #<%= @user.id %></h3>
-</div>
-
-<div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Email</dt>
-      <dd><%= @user.email %></dd>
-
-      <dt>Password</dt>
-      <dd><%= @user.password %></dd>
-
-      <dt>Username</dt>
-      <dd><%= @user.username %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/users" class="btn btn-primary">
-        Back
-      </a>
-    </div>
-  </div>
+  <h3>Welcome <%= @user.username %></h3>
 </div>
 
 <!-- A User has many questions -->
@@ -30,65 +8,28 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Questions
+        Asked Questions
       </li>
-
-      <% @user.questions.each do |post| %>
-        <li class="list-group-item">
-          <a href="/posts/<%= post.id %>">
-            <%= post.body %>
+        <% @user.questions.each do |post| %>
+        <li class="list-group-item" id="post_<% post.id %>">
+        <a href="/posts/<%= post.id %>">  <%= post.body %></a>
+        <a href="/posts/<%= post.id %>">
+          <i class="fa fa-search-plus pull-right"></i>
+        </a>
+        <%if current_user == post.user %>
+          <a href="/delete_post/<%= post.id %>" rel="nofollow">
+            <i class="fa fa-trash-o pull-right"></i>
           </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/posts/<%= post.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == post.user %>
-              <a href="/posts/<%= post.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_post/<%= post.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
+          <dt>YES:  <%= post.nos_count %></dt>
+          <dt>NO:   <%= post.picks_count%></dt>
+
+            <% end %>
             <% end %>
           </div>
         </li>
-      <% end %>
     </ul>
   </div>
-</div>
 
-<!-- A User has many vosts -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Vosts
-      </li>
-
-      <% @user.vosts.each do |vost| %>
-        <li class="list-group-item">
-          <a href="/vosts/<%= vost.id %>">
-            <%= vost.response %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/vosts/<%= vost.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == vost.user %>
-              <a href="/vosts/<%= vost.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_vost/<%= vost.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
 
 <!-- A User has many whies -->
 
@@ -96,60 +37,23 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Whies
+        My Whies
       </li>
 
       <% @user.whies.each do |why| %>
         <li class="list-group-item">
-          <a href="/whies/<%= why.id %>">
-            <%= why.created_at %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/whies/<%= why.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == why.user %>
-              <a href="/whies/<%= why.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
+          Question: <a href="/posts/<%= why.post.id %>"><%= why.post.body %></a>
         </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many whyvosts -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Whyvosts
-      </li>
-
-      <% @user.whyvosts.each do |whyvost| %>
         <li class="list-group-item">
-          <a href="/whyvosts/<%= whyvost.id %>">
-            <%= whyvost.response %>
+          My Answer:  <%= why.response %>
+          <a href="/delete_why/<%= why.id %>" rel="nofollow">
+            <i class="fa fa-trash-o pull-right"></i>
           </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/whyvosts/<%= whyvost.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/whyvosts/<%= whyvost.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_whyvost/<%= whyvost.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
         </li>
       <% end %>
     </ul>
   </div>
+
+
+
 </div>

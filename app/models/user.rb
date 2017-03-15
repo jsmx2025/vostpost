@@ -2,20 +2,19 @@ class User < ApplicationRecord
   # Direct associations
 
   has_many   :whies,
-             :dependent => :nullify
+             :dependent => :destroy
 
-  has_many   :vosts,
-             :dependent => :nullify
+  has_many   :picks,
+             :dependent => :destroy
+
+  has_many   :nos,
+             :dependent => :destroy
 
   has_many   :questions,
              :class_name => "Post",
-             :dependent => :nullify
+             :dependent => :destroy
 
   # Indirect associations
-
-  has_many   :whyvosts,
-             :through => :whies,
-             :source => :whyvosts
 
   # Validations
 

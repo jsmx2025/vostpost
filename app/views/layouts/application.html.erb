@@ -4,22 +4,25 @@
   <meta charset="utf-8">
   <title>Vostpost</title>
 
-
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//bootswatch.com/superhero/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <style>
+    body {
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    </style>
 
   <style>
     /* Only necessary if you are using navbar-fixed-top */
     body {
-      padding-top: 60px;
+      padding-top: 80px;
     }
   </style>
-
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/3.3.5/js/bootstrap.min.js/"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,45 +38,45 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">Vostpost</a>
+        <a href="/" class="navbar-brand" class="hidden-sm"><%= image_tag 'vost.jpg', height: 28, width: 28 %></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/whyvosts">Whyvosts</a></li>
-          <li><a href="/vosts">Vosts</a></li>
-          <li><a href="/whies">Whies</a></li>
-          <li><a href="/posts">Posts</a></li>
-          <li><a href="/users">Users</a></li>
-          <li><a href="/rails/info">Sitemap</a></li>
+          <% if current_user.present? %>
+          <li><a href="/users/<%= current_user.id %>"><i class="fa fa-2x fa-home" aria-hidden="true"></i>
+            <span class="hidden-sm">
+            HOME
+          </span>
+        </a>
+      </li>
+          <li><a href="/"><i class="fa fa-2x fa-globe" aria-hidden="true"></i><span class="hidden-sm">VOST WORLD</a></li>
+          <% else %>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
             <li>
-              <a href="/users/edit">
-                <%= current_user.email %>
-              </a>
+              <a href="/users/edit"><i class="fa fa-2x fa-user" aria-hidden="true"></i><span class="hidden-sm">MY PROFILE</span></a>
             </li>
 
             <li>
-              <a href="/users/sign_out" data-method="delete" rel="nofollow">
-                Sign Out
+              <a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-2x fa-sign-out"></i>
+                <span class="hidden-sm">LOG OUT</span>
               </a>
             </li>
           <% else %>
             <li>
-              <a href="/users/sign_up">
-                Sign Up
-              </a>
-            </li>
-
-            <li>
               <a href="/users/sign_in">
-                Sign In
+                LOG IN
               </a>
             </li>
+          <li>  <a href="/users/sign_up">
+              JOIN
+            </a>
+          </li>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->

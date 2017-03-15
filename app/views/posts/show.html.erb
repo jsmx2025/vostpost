@@ -1,41 +1,20 @@
 <div class="page-header">
-  <h3>Post #<%= @post.id %></h3>
+  <h3>Post <%= @post.id %></h3>
+  <h3><%= @post.body %></h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>User</dt>
-      <dd>
-        <% if @post.user.present? %>
-          <a href="/users/<%= @post.user_id %>">
-            <%= @post.user.email %>
-          </a>
-        <% end %>
-      </dd>
-
-      <dt>Body</dt>
-      <dd><%= @post.body %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/posts" class="btn btn-primary">
-        Back
-      </a>
-      <% if current_user == @post.user %>
-        <a href="/posts/<%= @post.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_post/<%= @post.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-      <% end %>
-    </div>
+  <div class="btn">
+    <a href="/posts" class="btn">
+      Back
+    </a>
+    <a href="/users/<%= @user.id %>" class="btn">Back Home</a>
+    <% if current_user.id == @post.user_id %>
+    <a href="/delete_post/<%= @post.id %>" class="btn">Delete</a>
+    <% else %>
+    <% end %>
   </div>
 </div>
-
-<!-- A Post has many vosts -->
 
 <div class="row">
   <div class="col-md-12">
@@ -43,54 +22,14 @@
       <li class="list-group-item list-group-item-info">
         Vosts
       </li>
-
-      <% @post.vosts.each do |vost| %>
-        <li class="list-group-item">
-          <a href="/vosts/<%= vost.id %>">
-            <%= vost.response %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/vosts/<%= vost.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/vosts/<%= vost.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_vost/<%= vost.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
       <li class="list-group-item">
-        <form action="/create_vost" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
-
-      <!-- Label and input for post_id -->
-      <input type="hidden" name="post_id" value="<%= @post.id %>">
-
-      <!-- Label and input for response -->
-      <div class="form-group">
-        <label for="response" class="control-label">
-          Response
-        </label>
-
-        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Vost
-      </button>
-    </form>
-      </li>
-    </ul>
+    <dl>
+      <dd>YES: <%= @post.picks_count %></dd>
+      <dd>NO:  <%= @post.nos_count %></dd>
+    </dl>
+  </li>
+    </div>
   </div>
-</div>
 
 <!-- A Post has many whies -->
 
@@ -103,129 +42,14 @@
 
       <% @post.whies.each do |why| %>
         <li class="list-group-item">
-          <a href="/whies/<%= why.id %>">
-            <%= why.created_at %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/whies/<%= why.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+            <%= why.response %>
+            <% if why.user == current_user %>
+            <a href="/delete_why/<%= why.id %>/" rel="nofollow">
+              <i class="fa fa-trash-o pull-right"></i>
             </a>
-            <a href="/whies/<%= why.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_why/<%= why.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <% else %>
+            <% end %>
+              </li>
+              <% end %>
           </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_why" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
-
-      <!-- Label and input for post_id -->
-      <input type="hidden" name="post_id" value="<%= @post.id %>">
-
-      <!-- Label and input for vost_id -->
-      <div class="form-group">
-        <label for="vost_id" class="control-label">
-          Vost
-        </label>
-
-        <%= select_tag(:vost_id, options_from_collection_for_select(Vost.all, :id, :response), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for response -->
-      <div class="form-group">
-        <label for="response" class="control-label">
-          Response
-        </label>
-
-        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Why
-      </button>
-    </form>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- A Post has many whyvosts -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Whyvosts
-      </li>
-
-      <% @post.whyvosts.each do |whyvost| %>
-        <li class="list-group-item">
-          <a href="/whyvosts/<%= whyvost.id %>">
-            <%= whyvost.response %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/whyvosts/<%= whyvost.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/whyvosts/<%= whyvost.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_whyvost/<%= whyvost.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_whyvost" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for vost_id -->
-      <div class="form-group">
-        <label for="vost_id" class="control-label">
-          Vost
-        </label>
-
-        <%= select_tag(:vost_id, options_from_collection_for_select(Vost.all, :id, :response), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for post_id -->
-      <input type="hidden" name="post_id" value="<%= @post.id %>">
-
-      <!-- Label and input for why_id -->
-      <div class="form-group">
-        <label for="why_id" class="control-label">
-          Why
-        </label>
-
-        <%= select_tag(:why_id, options_from_collection_for_select(Why.all, :id, :created_at), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for response -->
-      <div class="form-group">
-        <label for="response" class="control-label">
-          Response
-        </label>
-
-        <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Whyvost
-      </button>
-    </form>
-      </li>
-    </ul>
-  </div>
-</div>
+        </div>

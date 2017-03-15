@@ -1,13 +1,14 @@
 class Post < ApplicationRecord
   # Direct associations
 
-  has_many   :whyvosts,
-             :dependent => :destroy
 
   has_many   :whies,
-             :dependent => :nullify
+             :dependent => :destroy
 
-  has_many   :vosts,
+  has_many    :picks,
+             :dependent => :destroy
+
+  has_many    :nos,
              :dependent => :destroy
 
   belongs_to :user,
@@ -18,5 +19,6 @@ class Post < ApplicationRecord
   # Validations
 
   validates :body, :presence => true
+
 
 end

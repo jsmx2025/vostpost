@@ -11,16 +11,18 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(:distinct => true).includes(:user, :vosts, :whies, :whyvosts).page(params[:page]).per(10)
-
+    @posts = @q.result(:distinct => true).includes(:user, :whies).page(params[:page]).per(10)
     render("posts/index.html.erb")
   end
 
   def show
-    @whyvost = Whyvost.new
     @why = Why.new
-    @vost = Vost.new
+    @yes = Pick.new
+    @no = No.new
     @post = Post.find(params[:id])
+
+    @user = User.find_by(:id => current_user.id)
+
 
     render("posts/show.html.erb")
   end
