@@ -55,31 +55,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
-
-    render("posts/edit.html.erb")
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    @post.body = params[:body]
-
-    @user = User.find_by(:id => current_user.id)
-
-    save_status = @post.save
-
-    if save_status == true
-      referer = URI(request.referer).path
-
-      case referer
-      when "/posts/#{@post.id}/edit", "/update_post"
-        redirect_to("/users/#{@user.id}", :notice => "Post updated successfully.")
-      else
-      end
-
-    end
-  end
 
   def destroy
     @post = Post.find(params[:id])

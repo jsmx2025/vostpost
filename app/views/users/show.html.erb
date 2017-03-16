@@ -22,8 +22,6 @@
           <a href="/delete_post/<%= post.id %>" rel="nofollow">
             <i class="fa fa-trash-o pull-right"></i>
           </a>
-          <a href="/posts/<%= post.id %>/edit" rel="nofollow">
-            <i class="fa fa-pencil pull-right"></i></a>
           <% end %>
           <dt>YES:  <%= post.nos_count %></dt>
           <dt>NO:   <%= post.picks_count%></dt>
@@ -49,14 +47,14 @@
         </li>
         <li class="list-group-item">
           My Answer:  <%= why.response %>
+        </li>
           <a href="/delete_why/<%= why.id %>" rel="nofollow">
             <i class="fa fa-trash-o pull-right"></i>
           </a>
           <a href="/whies/<%= why.id %>/edit"><i class="fa fa-pencil pull-right"></i></a>
-        </li>
-        <% end %>
       </div>
     </div>
+    <% end %>
     </ul>
   </div>
 </div>

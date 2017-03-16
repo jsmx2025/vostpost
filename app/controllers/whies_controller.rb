@@ -43,8 +43,7 @@ class WhiesController < ApplicationController
     else
       notice = "Can't Comment on your own Post brah."
     end
-
-    redirect_to "/posts#post_#{@post.id}", :notice => notice
+    redirect_to "/posts/#{@post.id}", :notice => notice
   end
 
   def edit

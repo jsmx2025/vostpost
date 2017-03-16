@@ -1,11 +1,24 @@
 <div class="page-header">
   <h3>Post</h3>
   <h3><%= @post.body %></h3>
+  <dd><form action="/create_why" method="post">
+  <!-- Hidden input for authenticity token to protect from forgery -->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+  <!-- Label and input for user_id -->
+  <input type="hidden" name="post_id" value="<%= @post.id  %>">
+  <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+  <input type="text" id="response" name="response" placeholder="Response" class="form-control" value="">
+  <button class="btn btn-success">
+    Create Why
+  </button>
+</form></dd>
 </div>
 
 <div class="row">
   <div class="btn">
-    <a href="/posts" class="btn">
+    <a href="/posts#post_<%= @post.id %>" class="btn">
       Back
     </a>
     <a href="/users/<%= @user.id %>" class="btn">Back Home</a>
@@ -51,8 +64,9 @@
             <%= why.response %>
             <% if why.user == current_user %>
             <a href="/delete_why/<%= why.id %>/" rel="nofollow">
-              <i class="fa fa-trash-o pull-right"></i>
-            </a>
+              <i class="fa fa-trash-o pull-right"></i></a>
+            <a href="/whies/<%= why.id %>/edit" rel="nofollow">
+              <i class="fa fa-pencil pull-right"></i></a>
             <% else %>
             <% end %>
               </li>

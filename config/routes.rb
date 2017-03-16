@@ -12,20 +12,7 @@ Rails.application.routes.draw do
 
   get "/no/new", :controller => "nos", :action => "new_no"
   post "/create_no", :controller => "yeses", :action => "create_no"
-  # READ
-  get "/yes", :controller => "yeses", :action => "index"
-  get "/yes/:id", :controller => "yeses", :action => "show"
-
-  get "/no", :controller => "nos", :action => "index"
-  get "/no/:id", :controller => "nos", :action => "show"
-
-  # UPDATE
-  # get "/yes/:id/edit", :controller => "yes", :action => "edit"
-  # post "/update_yes/:id", :controller => "yes", :action => "update"
-  #
-  # get "/no/:id/edit", :controller => "no", :action => "edit"
-  # post "/update_no/:id", :controller => "no", :action => "update"
-
+  
   # DELETE
   get "/delete_yes/:id", :controller => "yeses", :action => "destroy"
   get "/delete_no/:id", :controller => "yeses", :action => "destroy"
