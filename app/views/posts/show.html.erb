@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Post <%= @post.id %></h3>
+  <h3>Post</h3>
   <h3><%= @post.body %></h3>
 </div>
 
@@ -22,12 +22,16 @@
       <li class="list-group-item list-group-item-info">
         Vosts
       </li>
+      <div class="panel panel-default">
+        <div class="panel-body">
       <li class="list-group-item">
     <dl>
       <dd>YES: <%= @post.picks_count %></dd>
       <dd>NO:  <%= @post.nos_count %></dd>
     </dl>
   </li>
+</div>
+</div>
     </div>
   </div>
 
@@ -41,6 +45,8 @@
       </li>
 
       <% @post.whies.each do |why| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
         <li class="list-group-item">
             <%= why.response %>
             <% if why.user == current_user %>
@@ -50,6 +56,8 @@
             <% else %>
             <% end %>
               </li>
+            </div>
+          </div>
               <% end %>
           </div>
         </div>

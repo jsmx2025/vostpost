@@ -75,7 +75,7 @@ def create_no
  @no = No.new
 
  @no.user_id = current_user.id
- @no.post_id = params[:post_id]
+ @no.post_id = @post.id
 
   # @yes = Pick.find_by(:post_id => params[:post_id], :user_id => current_user.id)
    notice = "Vost Made"
@@ -89,7 +89,6 @@ def create_no
   @yeses = Pick.where(:user_id => current_user.id, :post_id => params[:post_id])
   if @yeses.count > 0
     @yeses.destroy_all
-  else
     notice = "Vost Changed"
   end
   redirect_to "/posts#post_#{@post.id}", :notice => notice

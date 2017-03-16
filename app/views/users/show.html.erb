@@ -11,8 +11,10 @@
         Asked Questions
       </li>
         <% @user.questions.each do |post| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
         <li class="list-group-item" id="post_<% post.id %>">
-        <a href="/posts/<%= post.id %>">  <%= post.body %></a>
+        <a href="/posts/<%= post.id %>"> <%= post.body %> </a>
         <a href="/posts/<%= post.id %>">
           <i class="fa fa-search-plus pull-right"></i>
         </a>
@@ -20,27 +22,28 @@
           <a href="/delete_post/<%= post.id %>" rel="nofollow">
             <i class="fa fa-trash-o pull-right"></i>
           </a>
+          <a href="/posts/<%= post.id %>/edit" rel="nofollow">
+            <i class="fa fa-pencil pull-right"></i></a>
+          <% end %>
           <dt>YES:  <%= post.nos_count %></dt>
           <dt>NO:   <%= post.picks_count%></dt>
-
             <% end %>
-            <% end %>
-          </div>
         </li>
+      </div>
+    </div>
     </ul>
   </div>
-
-
+</div>
 <!-- A User has many whies -->
-
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
         My Whies
       </li>
-
       <% @user.whies.each do |why| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
         <li class="list-group-item">
           Question: <a href="/posts/<%= why.post.id %>"><%= why.post.body %></a>
         </li>
@@ -49,11 +52,11 @@
           <a href="/delete_why/<%= why.id %>" rel="nofollow">
             <i class="fa fa-trash-o pull-right"></i>
           </a>
+          <a href="/whies/<%= why.id %>/edit"><i class="fa fa-pencil pull-right"></i></a>
         </li>
-      <% end %>
+        <% end %>
+      </div>
+    </div>
     </ul>
   </div>
-
-
-
 </div>

@@ -47,32 +47,32 @@ class WhiesController < ApplicationController
     redirect_to "/posts#post_#{@post.id}", :notice => notice
   end
 
-  # def edit
-  #   @why = Why.find(params[:id])
-  #
-  #   render("whies/edit.html.erb")
-  # end
-  #
-  # def update
-  #   @why = Why.find(params[:id])
-  #   @why.post_id = params[:post_id]
-  #   @why.response = params[:response]
-  #
-  #   save_status = @why.save
-  #
-  #   if save_status == true
-  #     referer = URI(request.referer).path
-  #
-  #     case referer
-  #     when "/whies/#{@why.id}/edit", "/update_why"
-  #       redirect_to("/whies/#{@why.id}", :notice => "Why updated successfully.")
-  #     else
-  #       redirect_back(:fallback_location => "/", :notice => "Why updated successfully.")
-  #     end
-  #   else
-  #     render("whies/edit.html.erb")
-  #   end
-  # end
+  def edit
+    @why = Why.find(params[:id])
+    @user = User.find_by(:id => current_user.id)
+
+    render("whies/edit.html.erb")
+  end
+
+  def update
+    @why = Why.find(params[:id])
+    @why.post_id = params[:post_id]
+    @why.response = params[:response]
+
+    @user = User.find_by(:id => current_user.id)
+    save_status = @why.save
+
+    if save_status == true
+      referer = URI(request.referer).path
+
+      case referer
+      when "/whies/#{@why.id}/edit", "/update_why"
+        redirect_to "/users/#{@user.id}", :notice => "Why updated successfully."
+      else
+        redirect_to "/users/#{@user.id}", :notice => "Why updated successfully."
+      end
+    end
+  end
 
   def destroy
     @post = Post.find_by(:id => params[:post_id])

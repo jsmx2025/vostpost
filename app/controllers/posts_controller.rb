@@ -65,6 +65,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.body = params[:body]
 
+    @user = User.find_by(:id => current_user.id)
+
     save_status = @post.save
 
     if save_status == true
@@ -72,12 +74,10 @@ class PostsController < ApplicationController
 
       case referer
       when "/posts/#{@post.id}/edit", "/update_post"
-        redirect_to("/posts/#{@post.id}", :notice => "Post updated successfully.")
+        redirect_to("/users/#{@user.id}", :notice => "Post updated successfully.")
       else
-        redirect_back(:fallback_location => "/", :notice => "Post updated successfully.")
       end
-    else
-      render("posts/edit.html.erb")
+
     end
   end
 
