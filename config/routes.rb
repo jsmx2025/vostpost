@@ -1,39 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  root :to => "posts#index"
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  # ActiveAdmin.routes(self)
+
   # Routes for the Whyvost resource:
-  # CREATE
-  get "/whyvosts/new", :controller => "whyvosts", :action => "new"
-  post "/create_whyvost", :controller => "whyvosts", :action => "create"
-
-  # READ
-  get "/whyvosts", :controller => "whyvosts", :action => "index"
-  get "/whyvosts/:id", :controller => "whyvosts", :action => "show"
-
-  # UPDATE
-  get "/whyvosts/:id/edit", :controller => "whyvosts", :action => "edit"
-  post "/update_whyvost/:id", :controller => "whyvosts", :action => "update"
-
-  # DELETE
-  get "/delete_whyvost/:id", :controller => "whyvosts", :action => "destroy"
-  #------------------------------
+  root :to => "posts#index"
 
   # Routes for the Vost resource:
   # CREATE
-  get "/vosts/new", :controller => "vosts", :action => "new"
-  post "/create_vost", :controller => "vosts", :action => "create"
+  get "/yes/new", :controller => "yeses", :action => "new_yes"
+  post "/create_yes", :controller => "yeses", :action => "create_yes"
 
-  # READ
-  get "/vosts", :controller => "vosts", :action => "index"
-  get "/vosts/:id", :controller => "vosts", :action => "show"
-
-  # UPDATE
-  get "/vosts/:id/edit", :controller => "vosts", :action => "edit"
-  post "/update_vost/:id", :controller => "vosts", :action => "update"
-
+  get "/no/new", :controller => "nos", :action => "new_no"
+  post "/create_no", :controller => "yeses", :action => "create_no"
+  
   # DELETE
-  get "/delete_vost/:id", :controller => "vosts", :action => "destroy"
+  get "/delete_yes/:id", :controller => "yeses", :action => "destroy"
+  get "/delete_no/:id", :controller => "yeses", :action => "destroy"
   #------------------------------
 
   # Routes for the Why resource:
@@ -65,7 +47,6 @@ Rails.application.routes.draw do
   # UPDATE
   get "/posts/:id/edit", :controller => "posts", :action => "edit"
   post "/update_post/:id", :controller => "posts", :action => "update"
-
   # DELETE
   get "/delete_post/:id", :controller => "posts", :action => "destroy"
   #------------------------------

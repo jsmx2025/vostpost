@@ -11,16 +11,18 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(:distinct => true).includes(:user, :vosts, :whies, :whyvosts).page(params[:page]).per(10)
-
+    @posts = @q.result(:distinct => true).includes(:user, :whies).page(params[:page]).per(10)
     render("posts/index.html.erb")
   end
 
   def show
-    @whyvost = Whyvost.new
     @why = Why.new
-    @vost = Vost.new
+    @yes = Pick.new
+    @no = No.new
     @post = Post.find(params[:id])
+
+    @user = User.find_by(:id => current_user.id)
+
 
     render("posts/show.html.erb")
   end
@@ -53,31 +55,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
-
-    render("posts/edit.html.erb")
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    @post.body = params[:body]
-
-    save_status = @post.save
-
-    if save_status == true
-      referer = URI(request.referer).path
-
-      case referer
-      when "/posts/#{@post.id}/edit", "/update_post"
-        redirect_to("/posts/#{@post.id}", :notice => "Post updated successfully.")
-      else
-        redirect_back(:fallback_location => "/", :notice => "Post updated successfully.")
-      end
-    else
-      render("posts/edit.html.erb")
-    end
-  end
 
   def destroy
     @post = Post.find(params[:id])

@@ -3,7 +3,6 @@ class CreateWhies < ActiveRecord::Migration
     create_table :whies do |t|
       t.integer :user_id
       t.integer :post_id
-      t.integer :vost_id
       t.string :response
 
       t.timestamps
